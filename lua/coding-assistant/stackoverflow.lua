@@ -17,7 +17,7 @@ local function isEmpty(input)
 end
 
 function M.run_cmd_with_terminal(cmd)
-  local termFmt = "FloatermNew --title=%s --wintype=float --autoclose=1 --name=%s --cmd=%s"
+  local termFmt = "FloatermNew --title=%s --wintype=float --autoclose=1 --name=%s %s"
   local termCmd = string.format(termFmt, randString(8), randString(9), cmd)
   api.nvim_command(termCmd)
 end
@@ -27,7 +27,7 @@ function M.so_search()
     if isEmpty(input) then
       return
     end
-    M.run_cmd_with_terminal("so -e google " .. input)
+    M.run_cmd_with_terminal("so" .. " -e google " .. input)
   end)
 end
 
